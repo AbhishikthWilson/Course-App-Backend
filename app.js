@@ -20,7 +20,17 @@ app.post("/add",(req,res)=>{
 })
 
 app.post("/search",(req,res)=>{
-    res.send("search page")
+    let input = req.body
+    coursemodel.find(input).then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+    
 })
 
 app.post("/view",(req,res)=>{
@@ -36,6 +46,6 @@ app.post("/view",(req,res)=>{
     
 })
 
-app.listen(8080,()=>{
+app.listen(8084,()=>{
     console.log("server sarted")
 })
