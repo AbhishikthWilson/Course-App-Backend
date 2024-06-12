@@ -46,6 +46,18 @@ app.post("/view",(req,res)=>{
     
 })
 
-app.listen(8084,()=>{
+app.post("/delete",(req,res)=>{
+    let input= req.body
+    coursemodel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({"status":"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json({"status":"error"})
+        })
+})
+
+app.listen(8086,()=>{
     console.log("server sarted")
 })
